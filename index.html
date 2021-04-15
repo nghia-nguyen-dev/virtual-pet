@@ -1,13 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Pet</title>
     <link rel="stylesheet" href="/css/index.css">
+    <title>Virtual Pet</title>
 </head>
+
 <body>
-    
+    <div id="root">
+        <div class="side-bar">
+            <div class="settings">
+                <div class="name-input">
+                    <label for="name"></label>
+                    <input type="text" name="name" id="name" placeholder="change name">
+                </div>
+                <button class="btn btn--reset">Reset</button>
+            </div>
+
+            <div class="info">
+                <div class="header">
+                    <p class="header__name">Spike</p>
+                    <p class="header__age">7 days old</p>
+                </div>
+
+                <div class="">
+                    <div class="stat">
+                        <p class="stat__title">Health</p>
+                        <div class="container container--health">
+                            <div class="fill fill--health"></div>
+                        </div>
+                    </div>
+
+                    <div class="stat">
+                        <p class="stat__title">Hunger</p>
+                        <div class="container container--hunger">
+                            <div class="fill fill--hunger"></div>
+                        </div>
+                    </div>
+
+                    <div class="stat">
+                        <p class="stat__title">Happy</p>
+                        <div class="container container--happy">
+                            <div class="fill fill--happy"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn--settings">Settings</button>
+            </div>
+        </div>
+        <main>
+            <div class="pet"></div>
+            <div class="actions">
+                <button>Clean</button>
+                <button>Feed</button>
+                <button>Play</button>
+            </div>
+        </main>
+    </div>
 </body>
+
 </html>
