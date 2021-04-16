@@ -1,5 +1,6 @@
 @import "./reset.css";
 @import "./font.css";
+@import "./variables.css";
 
 body {
 	background-color: #333;
@@ -23,7 +24,7 @@ body {
 
 .info {
     width: 100%;
-    display: none;
+    /* display: none; */
 }
 
 main {
@@ -36,13 +37,12 @@ main {
 }
 
 .actions {
-	margin-top: 30px;
+	margin-top: 33px;
 }
 
 button {
     font-size: 10px;
-	color: white;
-	background-color: cornflowerblue;
+	color: #333;
 	font-family: "Press Start 2P", Helvetica, sans-serif;
 	padding: 12px 16px;
     border-radius: 4px;
@@ -74,16 +74,16 @@ button {
 
 .fill--health {
 	width: 50%;
-	background-color: coral;
+	background-color: var(--hp-color);
 }
 
 .fill--hunger {
 	width: 85%;
-	background-color: rgb(149, 211, 79);
+	background-color: var(--hungry-color);
 }
 
 .fill--happy {
-	background-color: rgb(255, 218, 53);
+	background-color: var(--happy-color);
 }
 
 .side-bar {
@@ -112,14 +112,33 @@ button {
 
 .settings {
     width: 100%;
+    display: none;
 }
 
 .btn--reset {
     display: block;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: 110px;
 }
 
 .name-input {
     text-align: center;
+}
+
+input {
+	border: none;
+	padding: 10px 8px;
+	border-radius: 4px;
+}
+
+.btn--clean {
+	background-color: var(--hp-color);
+}
+
+.btn--feed {
+	background-color: var(--hungry-color);
+}
+
+.btn--play {
+	background-color: var(--happy-color);
 }
