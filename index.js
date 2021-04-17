@@ -1,9 +1,20 @@
-const state = {
+let state = {
 	pet: {
 		health: 0,
 		hunger: 100,
 		happy: 0,
-		age: 7,
+		age: 0,
+		name: "Spike",
+	},
+	showSettings: false,
+	gameOver: false,
+};
+const resetState = {
+    pet: {
+		health: 0,
+		hunger: 100,
+		happy: 0,
+		age: 0,
 		name: "Spike",
 	},
 	showSettings: false,
@@ -19,47 +30,57 @@ const happy = document.querySelector(".fill--happy");
 const settings = document.querySelector(".settings");
 const info = document.querySelector(".info");
 const buttons = document.querySelectorAll("button");
+const input = document.querySelector("input");
 
 // EVENT HANDLER
 buttons.forEach(button => button.addEventListener("click", handleClick));
+input.addEventListener("change", handleInput);
 
 const render = () => {
-	// if (state.pet.health === 0) {
-	// 	return alert(`GAME OVER`);
-	// }
+	if (state.gameOver) {
+		return alert(`GAME OVER`);
+	}
+	petInfo();
+	petStats();
+	sideBar();
+};
 
+const petInfo = () => {
 	petName.textContent = `${state.pet.name}`;
 	petAge.textContent = `${state.pet.age} years old`;
+};
 
+const petStats = () => {
 	health.style.width = `${state.pet.health}%`;
 	hunger.style.width = `${state.pet.hunger}%`;
 	happy.style.width = `${state.pet.happy}%`;
-
-    sideBar()
 };
 
-
 const sideBar = () => {
-    if (state.showSettings) {
+	if (state.showSettings) {
 		settings.style.display = "initial";
 		info.style.display = "none";
 	} else {
 		settings.style.display = "";
 		info.style.display = "initial";
 	}
-}
-
+};
 
 // Initial render
 render();
 
 // ACTIONS
-const increaseHealth = () =>state.pet.health === 100 ? null : (state.pet.health += 5);
-const decreaseHunger = () => state.pet.hunger === 0 ? null : (state.pet.hunger -= 1);
-const increaseHappy = () => state.pet.happy === 100 ? null : (state.pet.happy += 2);
-const showSettings = () => state.showSettings = true;
-const reset = () => console.log(`object`);
-const back = () => state.showSettings = false;
+const increaseHealth = () =>
+	state.pet.health === 100 ? null : (state.pet.health += 5);
+const decreaseHunger = () =>
+	state.pet.hunger === 0 ? null : (state.pet.hunger -= 1);
+const increaseHappy = () =>
+	state.pet.happy === 100 ? null : (state.pet.happy += 2);
+const showSettings = () => (state.showSettings = true);
+const reset = () => {
+    console.log(`reset`);
+};
+const back = () => (state.showSettings = false);
 
 function handleClick(e) {
 	switch (e.target.dataset.type) {
@@ -87,6 +108,12 @@ function handleClick(e) {
 	}
 
 	render();
+}
+
+function handleInput(e) {
+	state.pet.name = e.target.value;
+	input.value = "";
+	alert("Name updated!");
 }
 
 // const incrementAge = age => ++age;
