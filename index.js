@@ -18,7 +18,6 @@ const hunger = document.querySelector(".fill--hunger");
 const happy = document.querySelector(".fill--happy");
 const settings = document.querySelector(".settings");
 const info = document.querySelector(".info");
-
 const buttons = document.querySelectorAll("button");
 
 // EVENT HANDLER
@@ -36,26 +35,31 @@ const render = () => {
 	hunger.style.width = `${state.pet.hunger}%`;
 	happy.style.width = `${state.pet.happy}%`;
 
-	if (state.showSettings) {
+    sideBar()
+};
+
+
+const sideBar = () => {
+    if (state.showSettings) {
 		settings.style.display = "initial";
 		info.style.display = "none";
+	} else {
+		settings.style.display = "";
+		info.style.display = "initial";
 	}
+}
 
-    
-};
 
 // Initial render
 render();
 
 // ACTIONS
-const increaseHealth = () =>
-	state.pet.health === 100 ? null : (state.pet.health += 5);
-const decreaseHunger = () =>
-	state.pet.hunger === 0 ? null : (state.pet.hunger -= 1);
-const increaseHappy = () =>
-	state.pet.happy === 100 ? null : (state.pet.happy += 2);
-const showSettings = () => (state.showSettings = true);
+const increaseHealth = () =>state.pet.health === 100 ? null : (state.pet.health += 5);
+const decreaseHunger = () => state.pet.hunger === 0 ? null : (state.pet.hunger -= 1);
+const increaseHappy = () => state.pet.happy === 100 ? null : (state.pet.happy += 2);
+const showSettings = () => state.showSettings = true;
 const reset = () => console.log(`object`);
+const back = () => state.showSettings = false;
 
 function handleClick(e) {
 	switch (e.target.dataset.type) {
@@ -73,6 +77,9 @@ function handleClick(e) {
 			break;
 		case "reset":
 			reset();
+			break;
+		case "back":
+			back();
 			break;
 
 		default:
