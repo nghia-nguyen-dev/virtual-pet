@@ -23,8 +23,8 @@ body {
 }
 
 .info {
-    width: 100%;
-    /* display: none; */
+	width: 100%;
+	/* display: none; */
 }
 
 main {
@@ -33,7 +33,7 @@ main {
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-    background-color: #e0ede8;
+	background-color: #e0ede8;
 }
 
 .actions {
@@ -41,11 +41,11 @@ main {
 }
 
 button {
-    font-size: 10px;
+	font-size: 10px;
 	color: #333;
 	font-family: "Press Start 2P", Helvetica, sans-serif;
 	padding: 12px 16px;
-    border-radius: 4px;
+	border-radius: 4px;
 	border: 3px solid #333;
 }
 
@@ -94,34 +94,39 @@ button {
 	margin: 110px auto 0;
 }
 
+.btn--back {
+	display: block;
+	margin: 10px auto 0;
+}
+
 .header {
 	text-align: center;
 	margin-bottom: 40px;
 }
 
 .header__name {
-    font-size: 20px;
-    margin-bottom: 8px;
-    text-transform: uppercase;
+	font-size: 20px;
+	margin-bottom: 8px;
+	text-transform: uppercase;
 }
 
 .header__age {
-    opacity: .4;
+	opacity: 0.4;
 }
 
 .settings {
-    width: 100%;
-    display: none;
+	width: 100%;
+	display: none;
 }
 
 .btn--reset {
-    display: block;
-    margin: 0 auto;
-    margin-top: 110px;
+	display: block;
+	margin: 0 auto;
+	margin-top: 110px;
 }
 
 .name-input {
-    text-align: center;
+	text-align: center;
 }
 
 input {

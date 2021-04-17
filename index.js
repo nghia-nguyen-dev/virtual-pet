@@ -1,15 +1,3 @@
-const state = {
-	pet: {
-		health: 0,
-		hunger: 100,
-		happy: 0,
-		age: 0,
-		name: "Spike",
-	},
-	showSettings: false,
-	gameOver: false,
-};
-
 // DOM REF
 const petName = document.querySelector(".header__name");
 const petAge = document.querySelector(".header__age");
@@ -21,17 +9,30 @@ const info = document.querySelector(".info");
 const buttons = document.querySelectorAll("button");
 const input = document.querySelector("input");
 
+const state = {
+	pet: {
+		health: 10,
+		hunger: 100,
+		happy: 0,
+		age: 0,
+		name: "choo",
+	},
+	showSettings: false,
+	gameOver: false,
+};
+
 // EVENT HANDLER
 buttons.forEach(button => button.addEventListener("click", handleClick));
-input.addEventListener("change", handleInput);
+input.addEventListener("change", updateName);
 
 const render = () => {
-	if (state.gameOver) {
-		return alert(`GAME OVER`);
-	}
 	petInfo();
 	petStats();
 	sideBar();
+	if (state.gameOver) {
+		alert(`GAME OVER`);
+		reset();
+	}
 };
 
 const petInfo = () => {
@@ -59,16 +60,24 @@ const sideBar = () => {
 render();
 
 // ACTIONS
-const increaseHealth = () =>
-	state.pet.health === 100 ? null : (state.pet.health += 5);
-const decreaseHunger = () =>
-	state.pet.hunger === 0 ? null : (state.pet.hunger -= 1);
-const increaseHappy = () =>
-	state.pet.happy === 100 ? null : (state.pet.happy += 2);
-const showSettings = () => (state.showSettings = true);
-const reset = () => {
-    location.reload()
+const increaseHealth = () => (state.pet.health === 100 ? null : (state.pet.health += 5));
+const increaseHappy = () => (state.pet.happy === 100 ? null : (state.pet.happy += 2));
+const increaseHunger = () => (state.pet.hunger === 100 ? null : (state.pet.hunger += 2));
+const increaseAge = () => (state.pet.age += 1);
+
+const decreaseHealth = () => {
+	state.pet.health -= 1;
+	state.pet.health <= 0 && (state.gameOver = true);
 };
+const decreaseHunger = () => (state.pet.hunger === 0 ? null : (state.pet.hunger -= 10));
+const decreaseHappy = () => {
+	if (state.pet.happy === 0) return;
+	state.pet.happy -= getRandomNum();
+	if (state.pet.happy < 0) state.pet.happy = 0;
+};
+
+const showSettings = () => (state.showSettings = true);
+const reset = () => location.reload();
 const back = () => (state.showSettings = false);
 
 function handleClick(e) {
@@ -99,26 +108,21 @@ function handleClick(e) {
 	render();
 }
 
-function handleInput(e) {
+function updateName(e) {
 	state.pet.name = e.target.value;
 	input.value = "";
 	alert("Name updated!");
 }
 
-// const incrementAge = age => ++age;
+function getRandomNum() {
+	return Math.floor(Math.random() * 5 + 1);
+}
 
-// // checks if one day has passed.
-// function hasOneDayPassed() {
-// 	// get today's date. eg: "7/37/2007"
-// 	const date = new Date().toLocaleDateString();
+setInterval(() => {
+	increaseAge();
+	decreaseHealth();
+	increaseHunger();
+	decreaseHappy();
+	render();
+}, 10000);
 
-// 	// if there's a date in localstorage and it's equal to the above:
-// 	// inferring a day has yet to pass since both dates are equal.
-// 	if (localStorage.date === date) return false;
-
-// 	// this portion of logic occurs when a day has passed
-// 	localStorage.date = date;
-// 	return true;
-// }
-
-// hasOneDayPassed() && incrementAge(init.age);
