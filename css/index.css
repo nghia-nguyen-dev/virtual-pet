@@ -24,7 +24,6 @@ body {
 
 .info {
 	width: 100%;
-	/* display: none; */
 }
 
 main {
@@ -123,6 +122,8 @@ button {
 	display: block;
 	margin: 0 auto;
 	margin-top: 110px;
+	background-color: cornflowerblue;
+	color: white;
 }
 
 .name-input {
