@@ -17,13 +17,13 @@
                     <label for="name"></label>
                     <input type="text" name="name" id="name" placeholder="change name">
                 </div>
-                <button class="btn btn--reset">Reset Game</button>
+                <button class="btn btn--reset" data-type="reset">Reset Game</button>
             </div>
 
             <div class="info">
                 <div class="header">
-                    <p class="header__name">Spike</p>
-                    <p class="header__age">7 days old</p>
+                    <p class="header__name"></p>
+                    <p class="header__age"></p>
                 </div>
 
                 <div class="">
@@ -49,18 +49,19 @@
                     </div>
                 </div>
 
-                <button class="btn btn--settings">Settings</button>
+                <button class="btn btn--settings" data-type="settings">Settings</button>
             </div>
         </div>
         <main>
             <img src="/sprites/pet.png" alt="">
             <div class="actions">
-                <button class="btn btn--clean">Clean</button>
-                <button class="btn btn--feed">Feed</button>
-                <button class="btn btn--play">Play</button>
+                <button class="btn btn--clean" data-type="clean">Clean</button>
+                <button class="btn btn--feed" data-type="feed">Feed</button>
+                <button class="btn btn--play" data-type="play">Play</button>
             </div>
         </main>
     </div>
+    <script src="index.js"></script>
 </body>
 
 </html>

@@ -73,12 +73,10 @@ button {
 }
 
 .fill--health {
-	width: 50%;
 	background-color: var(--hp-color);
 }
 
 .fill--hunger {
-	width: 85%;
 	background-color: var(--hungry-color);
 }
 
