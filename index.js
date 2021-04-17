@@ -124,5 +124,5 @@ setInterval(() => {
 	increaseHunger();
 	decreaseHappy();
 	render();
-}, 10000);
+}, 60000);
 
