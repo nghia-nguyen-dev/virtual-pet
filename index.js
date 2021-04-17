@@ -9,7 +9,6 @@ const state = {
 	showSettings: false,
 	gameOver: false,
 };
- const resetState = {...state}
 
 // DOM REF
 const petName = document.querySelector(".header__name");
@@ -67,7 +66,9 @@ const decreaseHunger = () =>
 const increaseHappy = () =>
 	state.pet.happy === 100 ? null : (state.pet.happy += 2);
 const showSettings = () => (state.showSettings = true);
-const reset = () => console.log(`reset`)
+const reset = () => {
+    location.reload()
+};
 const back = () => (state.showSettings = false);
 
 function handleClick(e) {
