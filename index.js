@@ -34,7 +34,6 @@ const render = () => {
 		reset();
 	}
 };
-
 const petInfo = () => {
 	petName.textContent = `${state.pet.name}`;
 	petAge.textContent = `${state.pet.age} years old`;
